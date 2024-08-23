@@ -259,6 +259,7 @@ impl<'a> PacketRef<'a> {
         //         buf.len()
         //     ));
         // }
+        let len = buf.len();
         let (this, rest) = buf.split_at(len);
         let padding_bit = this[0] & 0b0010_0000;
         if padding_bit != 0 {
