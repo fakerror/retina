@@ -247,9 +247,6 @@ impl<'a> PacketRef<'a> {
             ));
         }
         let ver = buf[0] >> 6;
-        if ver != 2 {
-            return Err(format!("RTCP packets must be version 2; got {ver}"));
-        }
 
         // raw_len is "The length of this RTCP packet in 32-bit words minus one,
         // including the header and any padding."
