@@ -252,13 +252,13 @@ impl<'a> PacketRef<'a> {
         // including the header and any padding."
         let raw_len = (u16::from(buf[2]) << 8) | u16::from(buf[3]);
         let len = (usize::from(raw_len) + 1) * 4;
-        if buf.len() < len {
-            return Err(format!(
-                "RTCP packet header has length {} bytes; have only {}",
-                len,
-                buf.len()
-            ));
-        }
+        // if buf.len() < len {
+        //     return Err(format!(
+        //         "RTCP packet header has length {} bytes; have only {}",
+        //         len,
+        //         buf.len()
+        //     ));
+        // }
         let (this, rest) = buf.split_at(len);
         let padding_bit = this[0] & 0b0010_0000;
         if padding_bit != 0 {
